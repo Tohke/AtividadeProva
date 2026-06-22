@@ -7,7 +7,7 @@ public class ProblemasThreadBloqueante {
             "Iniciando processamento sequencial e bloqueante..."
         );
         try {
-            Thread.sleep(3000);
+            Thread.sleep(3000); // A thread poderia ter que dormir por ainda mais tempo
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

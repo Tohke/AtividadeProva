@@ -6,28 +6,55 @@ public class SolucaoCompletableFuture {
 
     public static void executar() {
         System.out.println(
-            "Iniciando requisição assíncrona com CompletableFuture..."
+            "[Thread Principal] Iniciando a busca de entregador de forma ASSÍNCRONA..."
         );
 
-        CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-            return "Dados resolvidos via CompletableFuture";
-        }).thenAccept(resultado -> {
+        CompletableFuture<String> buscaEntregador =
+            CompletableFuture.supplyAsync(() -> {
+                try {
+                    Thread.sleep(3500);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                return "Entregador Lucas (ID: 45)";
+            });
+
+        buscaEntregador.thenAccept(entregador -> {
             System.out.println(
-                "Processado na pipeline sem bloqueio: " + resultado
+                "\n--------------------------------------------------------------"
+            );
+            System.out.println(
+                "[Pipeline CompletableFuture] SINAL RECEBIDO: " +
+                    entregador +
+                    " alocado!"
+            );
+            System.out.println(
+                "[Pipeline CompletableFuture] Atualizando o mapa do cliente sem bloquear ninguém."
+            );
+            System.out.println(
+                "--------------------------------------------------------------\n"
             );
         });
 
-        System.out.println("Thread principal liberada imediatamente.");
+        System.out.println(
+            "[Thread Principal] Pipeline configurada. A thread principal CONTINUA LIVRE!"
+        );
 
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        for (int segundo = 1; segundo <= 5; segundo++) {
+            System.out.println(
+                "[Thread Principal] Processando outras coisas... (Segundo " +
+                    segundo +
+                    "/5)"
+            );
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
+
+        System.out.println(
+            "[Thread Principal] Fim do exemplo de CompletableFuture."
+        );
     }
 }
