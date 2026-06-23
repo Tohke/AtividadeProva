@@ -1,4 +1,4 @@
-package prova;
+package exemplos.future;
 
 import java.util.concurrent.CompletableFuture;
 

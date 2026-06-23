@@ -1,4 +1,12 @@
-package prova;
+package exemplos;
+
+import exemplos.assincrona.ProgramacaoAssincrona;
+import exemplos.bloqueante.ThreadBloqueante;
+import exemplos.callback.ExemploCallback;
+import exemplos.future.ProblemasFuture;
+import exemplos.future.SolucaoCompletableFuture;
+import exemplos.reativa.ProgramacaoReativa;
+import exemplos.reativa.ProgramacaoReativaLote;
 
 import java.util.Scanner;
 
@@ -17,7 +25,8 @@ public class Main {
             System.out.println("3 - Callbacks");
             System.out.println("4 - Problemas com Future em Java");
             System.out.println("5 - Solução com CompletableFuture");
-            System.out.println("6 - Programação reativa");
+            System.out.println("6 - Programação reativa (1 por 1)");
+            System.out.println("7 - Programação reativa (controle por lote)");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -25,7 +34,7 @@ public class Main {
                 opcao = scanner.nextInt();
                 switch (opcao) {
                     case 1:
-                        ProblemasThreadBloqueante.executar();
+                        ThreadBloqueante.executar();
                         break;
                     case 2:
                         ProgramacaoAssincrona.executar();
@@ -42,6 +51,8 @@ public class Main {
                     case 6:
                         ProgramacaoReativa.executar();
                         break;
+                    case 7:
+                        ProgramacaoReativaLote.executar();
                     case 0:
                         System.out.println("Encerrando a aplicação...");
                         break;

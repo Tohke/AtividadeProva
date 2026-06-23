@@ -1,4 +1,4 @@
-package prova;
+package exemplos.reativa;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;

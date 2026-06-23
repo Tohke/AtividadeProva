@@ -1,6 +1,6 @@
-package prova;
+package exemplos.bloqueante;
 
-public class ProblemasThreadBloqueante {
+public class ThreadBloqueante {
 
     public static void executar() {
         System.out.println(
